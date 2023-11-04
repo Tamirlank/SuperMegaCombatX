@@ -1,5 +1,4 @@
 import pygame
-import Game
 class Character():
     def __init__(self, x, y, name, max_hp, strength, sprite, scale):
         self.x = x
@@ -16,5 +15,6 @@ class Character():
         #self.image = pygame.transform.scale_by(self.image, )
         
     def draw(self):
-        Game.screen.blit(self.image, self.rect)
+        from Game import screen
+        screen.blit(self.image, self.rect)
         #pygame.draw.circle(screen, (0, 255, 0), (self.x, self.y), 30)

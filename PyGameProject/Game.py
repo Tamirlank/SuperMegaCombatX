@@ -1,7 +1,7 @@
 import pygame
 import sys
 import os
-import Character
+from Character import Character 
 import UI
 
 pygame.init()
@@ -22,11 +22,13 @@ bg = pygame.transform.scale(bg, (screenWidth, screenHeight))
 
 pygame.display.set_caption('Super Combat X')
 
-#dexterity, luck, defense, magic_str
-
-
 cloud = Character(200, 250, 'Cloud', 30, 10, 'cloud.jpg', 0.5)
 slime = Character(700, 250, 'Slime', 30, 10, 'Slime.png', 0.25)
+
+initiative = [cloud, slime]
+turn = 0
+
+# Functions
 
 def draw_bg():
     screen.blit(bg, (0, 0))
@@ -35,8 +37,7 @@ def draw_characters():
     cloud.draw()
     slime.draw()
 
-initiative = [cloud, slime]
-turn = 0
+# Update Loop
 
 while True:
     clock.tick(60)
