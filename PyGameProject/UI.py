@@ -9,9 +9,7 @@ WHITE = (255, 255, 255)
 font = pygame.font.SysFont('Arial', 26)
 
 def draw_chevron():
-    from Game import screen
-    from Game import enemy_list
-    from Game import selectedEnemy
+    from Game import screen, enemy_list, selectedEnemy
 
     current_enemy = enemy_list[selectedEnemy]
     temp_img = pygame.image.load('chevron.png')
@@ -34,8 +32,8 @@ def draw_healthbar(character):
     pygame.draw.rect(screen, GREEN, (character.x - 75, character.y + 100, 150 * (character.hp / character.max_hp), 20))
     
 def draw_controls():
-    from Game import screenHeight
-    from Game import panelHeight
+    from Game import screenHeight, panelHeight
+    
     draw_text('Z: Attack', font, WHITE, 200, screenHeight + panelHeight - 20)
     draw_text('X: Spell', font, WHITE, 350, screenHeight + panelHeight - 20)
     draw_text('C: Item', font, WHITE, 500, screenHeight + panelHeight - 20)

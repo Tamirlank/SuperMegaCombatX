@@ -4,6 +4,7 @@ import os
 from Character import Character 
 import UI
 import random
+from Spell import Spell, DamageType
 
 time_between_turns = 30
 turn_timer = 30
