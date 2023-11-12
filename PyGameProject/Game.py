@@ -1,4 +1,3 @@
-from enum import Enum
 import pygame
 import sys
 import os
