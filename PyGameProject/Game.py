@@ -52,7 +52,7 @@ slime3 = Character('Slime', sprite='slime.png', scale=0.15, is_enemy=True,
                 max_hp=30, max_mana=10,
                 strength=5, magic_strength=10, armor=10, agility=10, luck=10)
 
-#random.shuffle(initiative)
+random.shuffle(initiative)
 current_turn = 0
 current_character: Character = initiative[0]
 highlited_spell = 0
