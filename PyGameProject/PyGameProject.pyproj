@@ -23,8 +23,9 @@
   <ItemGroup>
     <Compile Include="Character.py" />
     <Compile Include="Game.py" />
-    <Compile Include="Spell.py" />
+    <Compile Include="Spells.py" />
     <Compile Include="UI.py" />
+    <Compile Include="Utilities.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
