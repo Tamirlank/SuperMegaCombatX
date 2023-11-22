@@ -141,8 +141,6 @@ class Battle():
             self.current_character.ai_logic()
         
     def input_manager(self, event):
-        
-
         if self.game_state == GameState.IN_MENU:
             self.input_menu(event)
             return
@@ -150,6 +148,7 @@ class Battle():
         self.input_cursor(event)
         if self.game_state == GameState.PASSING_TURN:
             if event.key == pygame.K_b:
+                self.target_list = self.enemy_list
                 self.game_state = GameState.DEFAULT
             if event.key == pygame.K_z:
                 self.target_list = self.enemy_list
