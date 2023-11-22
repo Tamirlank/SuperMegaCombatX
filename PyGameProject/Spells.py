@@ -53,7 +53,7 @@ class DamageSpell(Spell):
             self.cost *= 2
     
     def use(self, damage_bonus, target, caster):
-        import MovingImage
+        import Utilities
         from Game import moving_images
         
         damage = self.base_damage + round(self.base_damage * float(damage_bonus) / 100) 
@@ -64,15 +64,15 @@ class DamageSpell(Spell):
             if caster.is_enemy:
                 for member in battle.party_list:
                     member.take_damage(damage, self.damage_type)
-                    MovingImage.animate(self.sprite, caster.x, caster.y, member.x, member.y, self.sprite_scale)
+                    Utilities.animate(self.sprite, caster.x, caster.y, member.x, member.y, self.sprite_scale)
             else:
                 for member in battle.enemy_list:
                     if member.alive:
                         member.take_damage(damage, self.damage_type)
-                        MovingImage.animate(self.sprite, caster.x, caster.y, member.x, member.y, self.sprite_scale)
+                        Utilities.animate(self.sprite, caster.x, caster.y, member.x, member.y, self.sprite_scale)
         else:
             target.take_damage(damage, self.damage_type)
-            MovingImage.animate(self.sprite, caster.x, caster.y, target.x, target.y, self.sprite_scale)
+            Utilities.animate(self.sprite, caster.x, caster.y, target.x, target.y, self.sprite_scale)
 
 class HealingSpell(Spell):
     def __init__(self, name: str, sprite: str = None, sprite_scale: float = 1,
@@ -107,7 +107,7 @@ class HealingSpell(Spell):
             self.cost *= 2
         
     def use(self, magic_strength, target, caster):
-        import MovingImage
+        import Utilities
         
         if self.revives:
             if self.spell_level == 1:
@@ -116,7 +116,7 @@ class HealingSpell(Spell):
                 percentage = 0.5
             else:
                 percentage = 1
-            MovingImage.animate(self.sprite, target.x, target.y, target.x, target.y, self.sprite_scale)
+            Utilities.animate(self.sprite, target.x, target.y, target.x, target.y, self.sprite_scale)
             target.heal(round(target.max_hp * percentage))
             return
         
@@ -127,15 +127,15 @@ class HealingSpell(Spell):
             if caster.is_enemy:
                 for member in battle.enemy_list:
                     member.heal(healing)
-                    MovingImage.animate(self.sprite, caster.x, caster.y, member.x, member.y, self.sprite_scale)
+                    Utilities.animate(self.sprite, caster.x, caster.y, member.x, member.y, self.sprite_scale)
             else:
                 for member in battle.party_list:
                     if member.alive:
                         member.heal(healing)
-                        MovingImage.animate(self.sprite, caster.x, caster.y, member.x, member.y, self.sprite_scale)
+                        Utilities.animate(self.sprite, caster.x, caster.y, member.x, member.y, self.sprite_scale)
         else:
             target.heal(healing)
-            MovingImage.animate(self.sprite, caster.x, caster.y, target.x, target.y, self.sprite_scale)
+            Utilities.animate(self.sprite, caster.x, caster.y, target.x, target.y, self.sprite_scale)
         
 spell_dict = {
     "phys_1": DamageSpell("Cleave", DamageType.PHYSICAL, cost=8, base_damage=20),

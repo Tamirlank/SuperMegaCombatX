@@ -199,14 +199,14 @@ class Character:
 
     def attack(self, target):
         from Game import battle
-        import MovingImage
+        import Utilities
 
         offset = 30
         if self.is_enemy:
             offset = offset * -1
         attack_animation_speed = 20        
 
-        MovingImage.animate(self.sprite, self.x + offset, self.y, self.x, self.y, self.scale, attack_animation_speed)
+        Utilities.animate(self.sprite, self.x + offset, self.y, self.x, self.y, self.scale, attack_animation_speed)
         self.attack_timer = attack_animation_speed
         battle.pass_available = False
         target.take_damage(self.base_damage + round(self.base_damage * float(self.strength) / 100), DamageType.PHYSICAL)
@@ -285,7 +285,7 @@ class Character:
         print(self.name + " used " + spell.name + ", it's very effective!")        
 
         from Game import battle
-        import MovingImage
+        import Utilities
         
 
         offset = 60
@@ -295,7 +295,7 @@ class Character:
         if isinstance(spell, DamageSpell) and spell.damage_type == DamageType.PHYSICAL:
             attack_animation_speed = 30        
 
-            MovingImage.animate(self.sprite, self.x + offset, self.y, self.x, self.y, self.scale, attack_animation_speed)
+            Utilities.animate(self.sprite, self.x + offset, self.y, self.x, self.y, self.scale, attack_animation_speed)
             self.attack_timer = attack_animation_speed
             damage_bonus = self.strength
             self.hp -= spell.cost
@@ -325,8 +325,8 @@ class Character:
 
     def die(self):
         from Game import battle
-        import MovingImage
-        MovingImage.animate("Attacks/Death.png", self.x, self.y, self.x, self.y, 3.5)
+        import Utilities
+        Utilities.animate("Attacks/Death.png", self.x, self.y, self.x, self.y, 3.5)
         self.alive = False
         if self.is_enemy:
             battle.enemy_list.remove(self)
@@ -409,8 +409,7 @@ class Character:
                 i -= 1
                 continue
             self.spells.append(random_spell)
-
-
+            
 player_dict = {
     'cloud': {
         "name": "Cloud",

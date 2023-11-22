@@ -148,8 +148,8 @@ class Battle():
         self.input_cursor(event)
         if self.game_state == GameState.PASSING_TURN:
             if event.key == pygame.K_b:
-                self.target_list = self.enemy_list
                 self.game_state = GameState.DEFAULT
+                self.target_list = self.enemy_list
             if event.key == pygame.K_z:
                 self.target_list = self.enemy_list
                 self.current_character = self.target
