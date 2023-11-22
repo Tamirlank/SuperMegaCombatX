@@ -21,8 +21,12 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Battle.py" />
     <Compile Include="Character.py" />
     <Compile Include="Game.py" />
+    <Compile Include="Item.py" />
+    <Compile Include="Menu.py" />
+    <Compile Include="MovingImage.py" />
     <Compile Include="Spells.py" />
     <Compile Include="UI.py" />
     <Compile Include="Utilities.py" />
